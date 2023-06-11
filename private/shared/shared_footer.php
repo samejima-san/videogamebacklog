@@ -4,7 +4,3 @@
 </body>
 </html>
 
-<?php
-    // 5. Close database connection
-    db_disconnect($db);
-?>

@@ -17,10 +17,14 @@
     </header>
     <nav>
         <ul>
-            <li><a href="<?php echo url_for('index.php'); ?>">Home</a></li>
-            <li><a href="<?php echo url_for('about.php'); ?>">About</a></li>
-            <li><a href="<?php echo url_for('contact.php'); ?>">Contact</a></li>
-            <li><a href="<?php echo url_for('login.php'); ?>">Login</a></li>
+            <div class="leftside">
+                <li><a href="<?php echo url_for('index.php'); ?>">Home</a></li>
+                <li><a href="<?php echo url_for('about.php'); ?>">About</a></li>
+                <li><a href="<?php echo url_for('contact.php'); ?>">Contact</a></li>
+            </div>
+            <div class="rightside">
+                <li><a href="<?php echo url_for('users/login.php'); ?>">Login</a></li>
+            </div>
         </ul>
     </nav>
     

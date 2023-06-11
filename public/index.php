@@ -11,5 +11,5 @@ ini_set('display_errors', 1);
 <?php include(SHARED_PATH . '/shared_header.php'); ?>
 <body>
     <h1> Home </h1>
-</body>
-<html>
+
+<?php include(SHARED_PATH . '/shared_footer.php'); ?>
