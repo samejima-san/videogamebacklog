@@ -1,7 +1,10 @@
 <?php
     if(!isset($page_title)) { $page_title = 'VGBL'; }
 ?>
-
+<?php
+    $db = db_connect();
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +26,12 @@
                 <li><a href="<?php echo url_for('contact.php'); ?>">Contact</a></li>
             </div>
             <div class="rightside">
-                <li><a href="<?php echo url_for('users/login.php'); ?>">Login</a></li>
+                <?php if(isset($_SESSION['username'])) : ?>
+                    <li><a href="<?php echo url_for('backlog/box.php'); ?>">My Backlog</a></li>
+                    <li><a href="<?php echo url_for('users/logout.php'); ?>">Logout</a></li>
+                <?php else : ?>
+                    <li><a href="<?php echo url_for('users/login.php'); ?>">Login</a></li>
+                <?php endif; ?>
             </div>
         </ul>
     </nav>

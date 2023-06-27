@@ -1,10 +1,11 @@
 <?php
-
+require_once('initialize.php');
 require_once('db_credentials.php');
 
 
 function db_connect(){
-    $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+    $connection = mysqli_connect($_ENV["DB_SERVER"], $_ENV["DB_USER"], $_ENV["DB_PASS"], $_ENV["DB_NAME"]);
+    //$connection = mysqli_connect("localhost", "saint", "karatekidv2", "users");
     return $connection;
 }
 
