@@ -1,7 +1,10 @@
 <?php
     require_once('../../private/initialize.php');
     $page_title = 'Sign Up';
-    session_start();
+?>
+
+<?php 
+    include(SHARED_PATH . '/shared_header.php'); 
     if(is_post_request()){
         $user = [];
 
@@ -34,9 +37,6 @@
         }
     }
 ?>
-
-<?php include(SHARED_PATH . '/shared_header.php'); ?>
-
 <body>
     <h1> Sign Up </h1>
     <form action="<?php echo h($_SERVER["PHP_SELF"]);?>" method="post">

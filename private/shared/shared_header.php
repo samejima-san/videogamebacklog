@@ -32,6 +32,7 @@
                 <?php else : ?>
                     <li><a href="<?php echo url_for('users/login.php'); ?>">Login</a></li>
                 <?php endif; ?>
+                    <li><a href="<?php echo url_for('users/search.php') ?>"><img src="<?php echo url_for('private/svg/magnifying-glass.svg'); ?>" alt="magnifying glass svg"></a></li>
             </div>
         </ul>
     </nav>

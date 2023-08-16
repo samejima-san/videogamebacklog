@@ -58,6 +58,11 @@ nav ul li a:hover{
     color: rgb(132, 250, 123);
 }
 
+.hidden{
+    visibility: hidden;
+    display: none;
+}
+
 footer{
     height: 5vh;
     width: 100vw;
@@ -67,3 +72,4 @@ footer{
     justify-content: center;
     align-items: center;
 }
+

@@ -12,7 +12,7 @@
         if($user){
             //password_verify($password, $user['pass'])
             if($user['pass'] === $password){
-                $_SESSION["user_id"] = $user['id'];
+                $_SESSION["user_id"] = $user['user_id'];
                 $_SESSION["username"] = $username;
                 $_SESSION["is_logged_in"] = true;
                 redirect_to(url_for('/index.php'));
