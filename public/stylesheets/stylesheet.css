@@ -13,6 +13,24 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+.finding-games{
+    border: 1px solid black;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100vw;
+}
+
+.games-add{
+    border: 1px solid red;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 header{
     height: 5vh;
     background-color: rgb(152, 202, 246);
