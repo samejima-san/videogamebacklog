@@ -4,6 +4,14 @@
     $u = $_GET['username'] ?? ''; 
     $data = get_moby_api('games?format=brief', 'moby_3QJYFKLb7CGCMIU3A6rwP2UiTa2');
     $data = json_decode($data, true);
+
+
+    if(is_post_request()){
+        $game_title = filter_input(INPUT_POST, 'game_title', FILTER_SANITIZE_STRING);
+        $game_id = filter_input(INPUT_POST, 'game_id', FILTER_SANITIZE_STRING);
+        add_game_to_box($_SESSION['box_id'], $game_id, $game_title);
+        redirect_to(url_for('backlog/box.php'));
+    }
 ?>
 
 <?php include(SHARED_PATH . '/shared_header.php'); ?>
@@ -29,16 +37,19 @@
                 echo '<p>No games in box</p>';
                 echo '</div>';
                 echo '<div class="finding-games">';
-                echo '<p>Find games to add to your box</p>';
-                for ($i = 0; $i < count($data['games']); $i++){
+                for ($i = 0; $i < count($data['games']); $i++) {
                     echo '<div class="games-add">';
-                    echo '<p>' . $data['games'][$i]['title'] . '</p>';
-                    echo '<p>' . $data['games'][$i]['game_id'] . '</p>';
-                    echo '<button>Add to Box</button>';
+                    echo '<p id="game_title">' . $data['games'][$i]['title'] . '</p>';
+                    echo '<p id="game_id">' . $data['games'][$i]['game_id'] . '</p>';
+                    echo '<form method="post" action="' . h($_SERVER["PHP_SELF"]) . '">';
+                    echo '<input type="hidden" name="game_title" value="' . $data['games'][$i]['title'] . '">';
+                    echo '<input type="hidden" name="game_id" value="' . $data['games'][$i]['game_id'] . '">';
+                    echo '<input type="submit" value="Add to Backlog">';
+                    echo '</form>';
                     echo '</div>';
                 }
+                
                 echo '</div>';
-
             }
             else{
                 //if not null, display games
@@ -54,6 +65,8 @@
         }
         else{
             create_box($_SESSION['user_id']);
+            $_SESSION['box_id'] = get_box_id($_SESSION['user_id']);
+            echo 'created backlog, load page again to add things to your backlog';
         }
     ?>
 

@@ -125,6 +125,36 @@
             return false;
         }
     }
+    
+    function get_box_id($user_id){
+        global $db;
+        $sql = "SELECT box_id FROM box ";
+        $sql .= "WHERE user_id='" . $user_id . "'";
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        $box = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return $box;
+    }
+
+    function add_game_to_box($game_id, $box_id){
+        global $db;
+        $sql = "INSERT INTO game_box ";
+        $sql .= "(game_id, box_id) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . $game_id . "',";
+        $sql .= "'" . $box_id . "'";
+        $sql .= ")";
+        $result = mysqli_query($db, $sql);
+
+        if($result){
+            return true;
+        }else{
+            echo mysqli_error($db);
+            db_disconnect($db);
+            return false;
+        }
+    }
 
     function get_all_games_from_box($user_id){
         global $db;
